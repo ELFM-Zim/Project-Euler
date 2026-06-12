@@ -6,37 +6,20 @@ fn main() {
     println!("Prime factor {result}");
 }
 
-fn prime_factor(x: i64) -> i64 {
-    let mut index = 0;
-    let mut divisible = 0;
+fn prime_factor(mut a: i64) -> i64 {
+    let mut b: i64 = 2;
 
-    while index < x {
-        if is_prime(index) {
-           if x%index == 0 {
-               divisible = index;
-               println!("Divisible: {divisible}");
-           }
+    while a > b {
+        if a%b == 0 {
+            a = a/b;
+            b = 2;
         }
-        index += 1;
-        println!("Index: {index}");
+        else {
+            b+=1;
+        }
     }
 
-    return divisible;
+    return b;
 }
 
-fn is_prime(x: i64) -> bool {
-    if x <= 1 {
-        return false;
-    }
-    
-    let mut index = 2;
 
-    while index < x {
-        if x%index == 0 {
-            return false;
-        }
-        index += 1;
-    }
-
-    return true;
-}
